@@ -1,9 +1,8 @@
 export const firebaseConfig = {
-    apiKey: "AIzaSyCQzczqpmTFTlNZKVgS3y3Nz3wTLp8l5y4",
-    authDomain: "antibiotik-az-demo.firebaseapp.com",
-    projectId: "antibiotik-az-demo",
-    storageBucket: "antibiotik-az-demo.appspot.com",
-    messagingSenderId: "575686123016",
-    appId: "1:575686123016:web:6ed3a7e01c6765d8e8bbbd",
-    measurementId: "G-0Z2C0CE6X8",
+ apiKey: "AIzaSyBh-le-IfiTY7LPJdbYhKzKI-fivu2cBgk",
+  authDomain: "yasar-aptek-1982e.firebaseapp.com",
+  projectId: "yasar-aptek-1982e",
+  storageBucket: "yasar-aptek-1982e.appspot.com",
+  messagingSenderId: "428546055801",
+  appId: "1:428546055801:web:4aca12c5c5d5c1234ebea8"
 };
