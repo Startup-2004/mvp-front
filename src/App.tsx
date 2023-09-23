@@ -1,57 +1,25 @@
-import { Outlet, useRoutes } from "react-router-dom";
-import Navbar from "./components/layout/Navbar";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Footer from "./components/layout/Footer";
-import AuthCard from "./components/layout/AuthCard";
 import { auth } from "./services/imports";
 import { useState } from "react";
 import { User } from "firebase/auth";
-import Login from "./pages/Login";
+import Router from "./router";
 
 function App() {
-    const [user, setUser] = useState<User | null | false>(false);
-
+    const [_, setUser] = useState<User | null>(null);
+    const [loaded, setLoaded] = useState(false);
     auth.onAuthStateChanged((user) => {
         setUser(user);
+        setLoaded(true);
     });
 
-    if (user === false) {
-      return <>Loading...</>
+    if (loaded === false) {
+        return (
+            <div className="w-screen h-screen flex justify-center items-center">
+                Loading...
+            </div>
+        );
     }
 
-    return useRoutes([
-        {
-            path: "/",
-            element: (
-                <>
-                    <Navbar />
-                    <Outlet />
-                    <Footer />
-                </>
-            ),
-            children: [
-                {
-                    path: "",
-                    element: <Home />,
-                },
-                {
-                    path: "about",
-                    element: <About />,
-                },
-            ],
-        },
-        {
-            path: "/auth",
-            element: <AuthCard />,
-            children: [
-                {
-                    path: "login",
-                    element: <Login />,
-                },
-            ],
-        },
-    ]);
+    return <Router />;
 }
 
 export default App;

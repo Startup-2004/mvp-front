@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Input from "../components/reusable/Input";
 import { auth } from "../services/imports";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Register() {
     const [credential, setCredential] = useState({ email: "", password: "" });
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -18,7 +18,7 @@ export default function Login() {
 
     function onSubmit(e: React.FormEvent) {
         e.preventDefault();
-        return signInWithEmailAndPassword(
+        return createUserWithEmailAndPassword(
             auth,
             credential.email,
             credential.password
@@ -32,13 +32,13 @@ export default function Login() {
             className="px-12 py-8 bg-white gap-2 flex flex-col shadow-lg items-center"
             onSubmit={onSubmit}
         >
-            <h1>Login</h1>
+            <h1>Register</h1>
             <Input type="text" onChange={handleChange} name="email" />
             <Input type="password" onChange={handleChange} name="password" />
             <button className="bg-blue-600 px-4 py-2 rounded-lg text-white">
-                Login
+                Register
             </button>
-            <a onClick={() => navigate("/auth/register")}>Go to Register</a>
+            <a onClick={() => navigate("/auth/login")}>Go to Login</a>
         </form>
     );
 }
